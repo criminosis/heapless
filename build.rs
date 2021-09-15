@@ -26,6 +26,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // see the `no-atomics.sh` / `no-cas.sh` script sitting next to this file
     match &target[..] {
         "avr-unknown-gnu-atmega328"
+        | "avr-atmega328p"
         | "bpfeb-unknown-none"
         | "bpfel-unknown-none"
         | "msp430-none-elf"
@@ -34,7 +35,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         | "thumbv4t-none-eabi"
         // | "thumbv6m-none-eabi"           // supported by atomic-polyfill
          => {}
-
         _ => {
             println!("cargo:rustc-cfg=has_cas");
         }
@@ -42,6 +42,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     match &target[..] {
         "avr-unknown-gnu-atmega328"
+        | "avr-atmega328p"
         | "msp430-none-elf"
         // | "riscv32i-unknown-none-elf"    // supported by atomic-polyfill
         // | "riscv32imc-unknown-none-elf"  // supported by atomic-polyfill
